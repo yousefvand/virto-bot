@@ -1,0 +1,37 @@
+{
+  "name": "virto-bot",
+  "version": "1.0.0",
+  "description": "Telegram antivirus bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remisa-yousefvand/virto-bot.git"
+  },
+  "keywords": [
+    "Telegram",
+    "bot",
+    "antivirus"
+  ],
+  "author": "Remisa Yousefvand",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/remisa-yousefvand/virto-bot/issues"
+  },
+  "homepage": "https://github.com/remisa-yousefvand/virto-bot#readme",
+  "dependencies": {
+    "deepmerge": "^2.1.1",
+    "log4js": "^3.0.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "cspell": "^3.1.3",
+    "jest": "^23.5.0",
+    "standard": "^12.0.1"
+  }
+}
