@@ -27,7 +27,13 @@ TELEGRAM_APIKEY=<TELEGRAM API KEY> VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> node 
 Run your virto-bot using docker image.
 
 ```bash
-docker run --name virtobot -e TELEGRAM_APIKEY=<TELEGRAM API KEY> -e VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> --restart always remisa/virto-bot
+docker run -d --name virtobot -e TELEGRAM_APIKEY=<TELEGRAM API KEY> -e VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> --restart always remisa/virto-bot
+```
+
+To check logs:
+
+```bash
+docker logs -f virtobot
 ```
 
 ### [demo](https://t.me/virtobot)
