@@ -1,7 +1,7 @@
 const config = {
-  env: 'production',
+  env: 'test',
   logger: {
-    level: 'error'
+    level: 'info'
   },
   token: {
     virusTotal: '<YOUR VIRUSTOTAL API TOKEN>',

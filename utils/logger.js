@@ -3,10 +3,11 @@ const config = require('../config')
 
 log4js.configure({
   appenders: {
-    everything: { type: 'file', filename: `./logs/${config.logger.name}.log`, maxLogSize: 4096, backups: 3, compress: true }
+    console: { type: 'console' },
+    filelog: { type: 'file', filename: `./logs/${config.logger.name}.log`, maxLogSize: 65536, backups: 99, compress: true }
   },
   categories: {
-    default: { appenders: [ 'everything' ], level: 'error' }
+    default: { appenders: [ 'filelog', 'console' ], level: 'info' }
   }
 })
 

@@ -4,6 +4,10 @@ const config = {
   env: 'development',
   logger: {
     level: 'info'
+  },
+  token: {
+    virusTotal: '<YOUR VIRUSTOTAL API TOKEN>',
+    telegram: '<YOUR TELEGRAM BOT TOKEN>'
   }
 }
 

@@ -4,7 +4,7 @@
   "description": "Telegram antivirus bot",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "./node_modules/.bin/jest",
     "build:docs": "./node_modules/.bin/documentation index.js"
   },
   "repository": {
@@ -25,7 +25,9 @@
   "dependencies": {
     "deepmerge": "^2.1.1",
     "log4js": "^3.0.5",
-    "path": "^0.12.7"
+    "node-telegram-bot-api": "^0.30.0",
+    "path": "^0.12.7",
+    "virustotal-api": "^1.0.1"
   },
   "devDependencies": {
     "cspell": "^3.1.3",

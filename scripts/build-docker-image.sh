@@ -1,1 +1,1 @@
-docker build -t virto-bot ../
+docker build -t remisa/virto-bot:1.0.0 ../
