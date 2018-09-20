@@ -1,1 +1,2 @@
-docker build -t remisa/virto-bot:1.0.0 ../
+# Run from project root directory
+docker build -t remisa/virto-bot:1.0.0 .

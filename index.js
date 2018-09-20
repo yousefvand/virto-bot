@@ -16,6 +16,8 @@ setInterval(() => processScanQueue(bot, virusTotal, scans)
   .catch((err) => logger.error(`Cannot process scan queue.
     ${err}`)), config.scan.processQueueInterval)
 
+logger.info('virto-bot started...')
+
 bot.on('message', async (msg) => {
   let user = users.get(msg.from.id)
   if (!user) {
