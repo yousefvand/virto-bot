@@ -9,7 +9,10 @@ const config = require('./config')
 
 const bot = new TelegramBot(process.env.TELEGRAM_APIKEY || config.token.telegram, { polling: true })
 const virusTotal = new VirusTotalApi(process.env.VIRUSTOTAL_APIKEY || config.token.virusTotal)
+const admin = process.env.VIRTOBOT_ADMIN || 'BotFather'
 const users = new Map()
+let scanCount = 0
+let shutdown = false
 const scans = []
 
 setInterval(() => processScanQueue(bot, virusTotal, scans)
@@ -25,6 +28,35 @@ bot.on('message', async (msg) => {
     users.set(user.id, user)
   }
 
+  if (user.username === admin) {
+    let adminChatId = msg.chat.id
+    switch (msg.text) {
+      case 'shutdown':
+        if (shutdown) {
+          bot.sendMessage(msg.chat.id, 'Service is already shutting down...')
+          return
+        }
+        shutdown = true
+        bot.sendMessage(msg.chat.id, 'Service is shutting down...')
+        const intervalId = setInterval(() => {
+          if (scans.length === 0) {
+            bot.sendMessage(adminChatId, 'Service shutdown successfully.')
+            clearInterval(intervalId)
+          }
+        }, 1000 * 60)
+        return
+      case 'stat':
+        bot.sendMessage(msg.chat.id, `So far ${scanCount} scans are done.`)
+        return
+      default:
+        bot.sendMessage(msg.chat.id, `Hello Boss 😊
+        Available commands:
+        shutdown
+        stat`)
+        break
+    }
+  }
+
   if (user.is_bot) {
     bot.sendMessage(msg.chat.id, 'Sorry, service is not available to bots.')
     logger.warn(`bot access denied.
@@ -32,6 +64,13 @@ bot.on('message', async (msg) => {
       message: ${msg.text}`)
     return
   }
+
+  if (shutdown) {
+    bot.sendMessage(msg.chat.id, `Sorry, service is not available now 🙈
+      Please come back later.`)
+    return
+  }
+
   const scan = await scanBuilder(msg, bot)
   if (scan && scan.unknown) {
     bot.sendMessage(msg.chat.id, 'You can only send file, url, ip or domain for scan', { reply_to_message_id: msg.message_id, parse_mode: 'HTML' })
@@ -43,6 +82,7 @@ bot.on('message', async (msg) => {
     return
   }
   try {
+    scanCount++
     if (scan.file) { // file
       const result = await virusTotal.fileScan(scan.file.data, scan.file.name)
       if (result.response_code === 1) {
