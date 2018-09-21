@@ -19,15 +19,20 @@ According to [Virustotal website](https://developers.virustotal.com/v2.0/referen
 ```bash
 git clone https://github.com/remisa-yousefvand/virto-bot.git
 cd virto-bot
-TELEGRAM_APIKEY=<TELEGRAM API KEY> VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> node index.js
+VIRTOBOT_ADMIN=<TELEGRAM ADMIN USERNAME> TELEGRAM_APIKEY=<TELEGRAM API KEY> VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> node index.js
 ```
+
+## Admin commands
+
+- `shutdown`: Shutdown service after processing queued scans.
+- `stat`: Total number of scan requests.
 
 ## Docker
 
 Run your virto-bot using docker image.
 
 ```bash
-docker run -d --name virtobot -e TELEGRAM_APIKEY=<TELEGRAM API KEY> -e VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> --restart always remisa/virto-bot
+docker run -d --name virtobot -e VIRTOBOT_ADMIN=<TELEGRAM ADMIN USERNAME> -e TELEGRAM_APIKEY=<TELEGRAM API KEY> -e VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> --restart always remisa/virto-bot
 ```
 
 To check logs:
@@ -45,6 +50,10 @@ docker logs -f virtobot
 - [ ] Cache results in db
 
 ### Changes
+
+#### **1.1.0**
+
+- Support admin commands (shutdown, stat)
 
 #### **1.0.0**
 
