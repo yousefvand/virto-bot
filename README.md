@@ -17,7 +17,7 @@ According to [Virustotal website](https://developers.virustotal.com/v2.0/referen
 ## Install
 
 ```bash
-git clone https://github.com/remisa-yousefvand/virto-bot.git
+git clone https://github.com/yousefvand/virto-bot.git
 cd virto-bot
 TELEGRAM_APIKEY=<TELEGRAM API KEY> VIRUSTOTAL_APIKEY=<VIRUSTOTALL API KEY> node index.js
 ```

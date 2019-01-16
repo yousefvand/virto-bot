@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/remisa-yousefvand/virto-bot.git"
+    "url": "git+https://github.com/yousefvand/virto-bot.git"
   },
   "keywords": [
     "Telegram",
@@ -19,9 +19,9 @@
   "author": "Remisa Yousefvand <remisa.yousefvand@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/remisa-yousefvand/virto-bot/issues"
+    "url": "https://github.com/yousefvand/virto-bot/issues"
   },
-  "homepage": "https://github.com/remisa-yousefvand/virto-bot#readme",
+  "homepage": "https://github.com/yousefvand/virto-bot#readme",
   "dependencies": {
     "deepmerge": "^2.1.1",
     "log4js": "^3.0.5",
